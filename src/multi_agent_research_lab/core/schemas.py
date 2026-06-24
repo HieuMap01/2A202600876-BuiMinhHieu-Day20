@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 
 class AgentName(StrEnum):
+    BASELINE = "baseline"
     SUPERVISOR = "supervisor"
     RESEARCHER = "researcher"
     ANALYST = "analyst"
@@ -38,4 +39,16 @@ class BenchmarkMetrics(BaseModel):
     latency_seconds: float
     estimated_cost_usd: float | None = None
     quality_score: float | None = Field(default=None, ge=0, le=10)
+    citation_coverage: float | None = Field(default=None, ge=0, le=1)
+    failure_rate: float | None = Field(default=None, ge=0, le=1)
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    source_count: int = 0
+    citation_count: int = 0
+    answer_chars: int = 0
+    agent_steps: int = 0
+    trace_events: int = 0
+    route_count: int = 0
+    error_count: int = 0
+    quality_breakdown: dict[str, float] = Field(default_factory=dict)
     notes: str = ""

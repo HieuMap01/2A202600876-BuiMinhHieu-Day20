@@ -12,10 +12,7 @@ from typing import Any
 
 @contextmanager
 def trace_span(name: str, attributes: dict[str, Any] | None = None) -> Iterator[dict[str, Any]]:
-    """Minimal span context used by the skeleton.
-
-    TODO(student): Replace or augment with LangSmith/Langfuse provider spans.
-    """
+    """Minimal span context used by the workflow."""
 
     started = perf_counter()
     span: dict[str, Any] = {"name": name, "attributes": attributes or {}, "duration_seconds": None}

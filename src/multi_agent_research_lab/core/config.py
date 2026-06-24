@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     openai_api_key: str | None = Field(default=None, validation_alias="OPENAI_API_KEY")
     openai_model: str = Field(default="gpt-4o-mini", validation_alias="OPENAI_MODEL")
 
+    llm_provider: str = Field(default="openai", validation_alias="LLM_PROVIDER")
+    llm_api_key: str | None = Field(default=None, validation_alias="LLM_API_KEY")
+    llm_base_url: str | None = Field(default=None, validation_alias="LLM_BASE_URL")
+    llm_model: str | None = Field(default=None, validation_alias="LLM_MODEL")
+
     langsmith_api_key: str | None = Field(default=None, validation_alias="LANGSMITH_API_KEY")
     langsmith_project: str = Field(default="multi-agent-research-lab", validation_alias="LANGSMITH_PROJECT")
 
